@@ -26,6 +26,7 @@ help() {
 if [[ $1 =~ ^(--help|help)$ ]]; then
   help
 fi
+[[ -z $fsmhost ]] && fsmhost=localhost
 
 get_user_salt() {
   local user=$1
@@ -33,7 +34,7 @@ get_user_salt() {
   local domain=$3
   local result
 
-  result=$(curl -sk 'https://localhost/phoenix/rest/h5/sec/loginInfo?s=' -H 'Connection: keep-alive' -H 'Content-Type: text/plain;charset=UTF-8' --data-raw '{"userName":"'$user'","organization":"'$org'","domain":"'${domain:-Empty}'"}')
+  result=$(curl -sk "https://${fsmhost}/phoenix/rest/h5/sec/loginInfo?s=" -H 'Connection: keep-alive' -H 'Content-Type: text/plain;charset=UTF-8' --data-raw '{"userName":"'$user'","organization":"'$org'","domain":"'${domain:-Empty}'"}')
   if [[ $result =~ ^\{\"salt\": ]]; then
     perl -pe 's/{"salt":"([^"]*)"}/\1/' <<< "$result"
 
@@ -77,7 +78,7 @@ authenticate() {
     salt=$(get_user_salt "${fsmuser,,}" "${fsmorg,,}" "${domain}")
     [[ $? -gt 0 ]] && rm -f ".${fsmorg,,}_${fsmuser,,}.cred" && exec $(basename $0) $url 
     session=($(awk -F'#' '{print $3}' ".${fsmorg,,}_${fsmuser,,}.cred" | decrypt_string $salt))
-    logged_in=$(curl --fail -sk "https://localhost/phoenix/rest/h5/sec/isLoggedIn?s=${session[2]}" --compressed -H "Cookie: JSESSIONID=${session[1]}; s=${session[0]}" -H 'Content-Type: application/json;charset=UTF-8' -H 'Accept: application/json, text/plain, */*' -H 'user-agent: FortiSIEM Rest Explorer' | perl -pe 's/.*loggedIn":"([^"]*).*/\1/')
+    logged_in=$(curl --fail -sk "https://${fsmhost}/phoenix/rest/h5/sec/isLoggedIn?s=${session[2]}" --compressed -H "Cookie: JSESSIONID=${session[1]}; s=${session[0]}" -H 'Content-Type: application/json;charset=UTF-8' -H 'Accept: application/json, text/plain, */*' -H 'user-agent: FortiSIEM Rest Explorer' | perl -pe 's/.*loggedIn":"([^"]*).*/\1/')
     if [[ ${logged_in,,} == true ]]; then
       return
     else
@@ -106,7 +107,7 @@ authenticate() {
   cookie=$(mktemp -u cookie.XXXXX)
 
 ## Send salted password to Super and if successful, store session variables
-  result=$(curl -sk --http1.1 -c $cookie -H 'Content-Type: text/plain;charset=UTF-8' -H 'Connection: keep-alive' -XPOST 'https://localhost/phoenix/rest/h5/sec/login?s=' --data-raw $cred | xargs)
+  result=$(curl -sk --http1.1 -c $cookie -H 'Content-Type: text/plain;charset=UTF-8' -H 'Connection: keep-alive' -XPOST "https://${fsmhost}/phoenix/rest/h5/sec/login?s=" --data-raw $cred | xargs)
   if [[ ${result,,} == "success" ]]; then
     session=($(grep -Pv '^(# |^$)' < $cookie | awk '{print $7}'))
     session[2]=$(echo -n "${session[0]}" | xxd -c 64 -u -p)
@@ -131,14 +132,14 @@ fsmapi() {
 ## If session variables are not valid, force user to authenticate
   [[ -z $session[0] || $session[1] || $session[2] ]] && authenticate
   if [[ $uri =~ \/device\/query$ ]]; then
-    response=$(curl --fail -sk "https://localhost${uri}?s=${session[2]}" --compressed -H "Cookie: JSESSIONID=${session[1]}; s=${session[0]}" -H 'Content-Type: application/json;charset=UTF-8' -H 'Accept: application/json, text/plain, */*' -H 'user-agent: FortiSIEM Rest Explorer' --data-raw '{"groupId":0}')
+    response=$(curl --fail -sk "https://${fsmhost}${uri}?s=${session[2]}" --compressed -H "Cookie: JSESSIONID=${session[1]}; s=${session[0]}" -H 'Content-Type: application/json;charset=UTF-8' -H 'Accept: application/json, text/plain, */*' -H 'user-agent: FortiSIEM Rest Explorer' --data-raw '{"groupId":0}')
     $jq_enabled && response=$(jq "$device_query_jq" <<< $response)
   else
-    response=$(curl --fail -sk "https://localhost${uri}?s=${session[2]}" --compressed -H "Cookie: JSESSIONID=${session[1]}; s=${session[0]}" -H 'Content-Type: application/json;charset=UTF-8' -H 'Accept: application/json, text/plain, */*' -H 'user-agent: FortiSIEM Rest Explorer')
+    response=$(curl --fail -sk "https://${fsmhost}${uri}?s=${session[2]}" --compressed -H "Cookie: JSESSIONID=${session[1]}; s=${session[0]}" -H 'Content-Type: application/json;charset=UTF-8' -H 'Accept: application/json, text/plain, */*' -H 'user-agent: FortiSIEM Rest Explorer')
   fi
   if [[ $? -gt 0 ]]; then
     echo "Failed to fetch data from $uri"
-    curl -sk "https://localhost${uri}?s=${session[2]}" --compressed -H "Cookie: JSESSIONID=${session[1]}; s=${session[0]}" -H 'Content-Type: application/json;charset=UTF-8' -H 'Accept: application/json, text/plain, */*' -H 'user-agent: FortiSIEM Rest Explorer' | perl -pe 's/.*<h1>(.*)<\/h1>.*/\1\n/'
+    curl -sk "https://${fsmhost}${uri}?s=${session[2]}" --compressed -H "Cookie: JSESSIONID=${session[1]}; s=${session[0]}" -H 'Content-Type: application/json;charset=UTF-8' -H 'Accept: application/json, text/plain, */*' -H 'user-agent: FortiSIEM Rest Explorer' | perl -pe 's/.*<h1>(.*)<\/h1>.*/\1\n/'
     exit 1
   fi
 
