@@ -1,0 +1,136 @@
+/phoenix/rest/dataRequest/networkDependency - XML - Layer3 network dependencies
+/phoenix/rest/changeSet - XML - Dynamic Watchlists?
+/phoenix/rest/cmdb/bizServices - XML - Defined business services
+/phoenix/rest/cmdb/event/type2group - XML - EventType to group mapping
+/phoenix/rest/cmdb/event/types - XML - Unknown
+/phoenix/rest/cmdbDeviceInfo/devices
+/phoenix/rest/config/EventForwardingRule
+/phoenix/rest/config/User - XML - All defined users
+/phoenix/rest/config/applicationPackage
+/phoenix/rest/config/deviceType
+/phoenix/rest/config/domain - XML - Domain configuration
+/phoenix/rest/config/eventAttributeType
+/phoenix/rest/config/eventReorgRule
+/phoenix/rest/config/networkInterface
+/phoenix/rest/config/service
+/phoenix/rest/config/systemConfig
+/phoenix/rest/dashboard/perfETInfo
+/phoenix/rest/dataRequest/report - XML - Unknown, possibly only user created reports
+/phoenix/rest/dataRequest/rule - XML - Complete export of rules
+/phoenix/rest/dataRequest/ruleException - XML - Defined rule exceptions
+/phoenix/rest/devMaintenance
+/phoenix/rest/device/deviceParserMapping
+/phoenix/rest/device/lightInfo - Unknown - Unknown
+/phoenix/rest/device/parsers - Unknown - Unknown
+/phoenix/rest/device/propLite - Unknown - Unknown
+/phoenix/rest/device/propertyDefs - Unknown - Unknown
+/phoenix/rest/deviceInfo/appFilter
+/phoenix/rest/deviceInfo/applicableDevices
+/phoenix/rest/deviceInfo/criticalIntfs
+/phoenix/rest/deviceInfo/eventPulling
+/phoenix/rest/deviceInfo/excludedDisks
+/phoenix/rest/deviceInfo/excludedSharedDevices
+/phoenix/rest/deviceInfo/importantPorts
+/phoenix/rest/deviceInfo/importantApps
+/phoenix/rest/deviceInfo/parsing
+/phoenix/rest/deviceInfo/perfMonDevice
+/phoenix/rest/deviceInfo/perfMonitor
+/phoenix/rest/eventData/settings
+/phoenix/rest/fins/aiSettings
+/phoenix/rest/fins/aiTags
+/phoenix/rest/h5/admin/analytics/incidenttag/list
+/phoenix/rest/h5/app/list
+/phoenix/rest/h5/app/pkg/<id from /phoenix/rest/h5/app/list> - JSON
+/phoenix/rest/h5/app/pkg/findByCust - JSON - Unknown
+/phoenix/rest/h5/cmdbReport/meta/all
+/phoenix/rest/h5/dashboard/folder/order
+/phoenix/rest/h5/dashboard/get
+/phoenix/rest/h5/dashboard/slideshow
+/phoenix/rest/h5/dashboard/widgets
+/phoenix/rest/h5/device/cnts - JSON - Unknown
+/phoenix/rest/h5/device/dts
+/phoenix/rest/h5/device/linkage
+/phoenix/rest/h5/device/monitoredFile
+/phoenix/rest/h5/device/monitoredFileName
+/phoenix/rest/h5/device/propDefs - JSON - Custom defined thresholds
+/phoenix/rest/h5/device/props - Unknown - Unknown
+/phoenix/rest/h5/device/query - JSON - Well formed JSON payload about devices
+/phoenix/rest/h5/device/quickInfo - Unknown - Unknown
+/phoenix/rest/h5/device/stat - Unknown - Unknown
+/phoenix/rest/h5/discover/credentials - JSON - Discovery crednetial information
+/phoenix/rest/h5/discover/flag/monitorInterface
+/phoenix/rest/h5/discover/flag/monitorProcess
+/phoenix/rest/h5/discover/ipMappings
+/phoenix/rest/h5/eventAttributeType/all - JSON - Complete list of EventTypes with category Id
+/phoenix/rest/h5/eventAttributeType/byEventType - Unknown - Unknown
+/phoenix/rest/h5/eventType/cnt - INT16 - Total count of defined EventTypes
+/phoenix/rest/h5/eventType/list - Event Type details
+/phoenix/rest/h5/eventType/parsers - JSON - Complete dump of all system parsers
+/phoenix/rest/h5/eventType/query - Unknown - Hangs
+/phoenix/rest/h5/gdpr/list/pending - JSON - List of GDPR devices?
+/phoenix/rest/h5/group/cmdb - JSON - High levelCMDB group information
+/phoenix/rest/h5/group/dashboard
+/phoenix/rest/h5/group/path
+/phoenix/rest/h5/group/report
+/phoenix/rest/h5/group/resource
+/phoenix/rest/h5/group/root/CmdbReport
+/phoenix/rest/h5/group/root/DyWatchList
+/phoenix/rest/h5/group/root/Network
+/phoenix/rest/h5/group/root/Report
+/phoenix/rest/h5/group/root/Rule
+/phoenix/rest/h5/group/root/Service
+/phoenix/rest/h5/mal/site/cnt - INT16 - Count of defined malware entries
+/phoenix/rest/h5/mal/site/group/CMDB_MalwareSite
+/phoenix/rest/h5/mal/site/list
+/phoenix/rest/h5/mitreAttack/list - JSON - MITRE Attack defs
+/phoenix/rest/h5/rbac/permission/entity
+/phoenix/rest/h5/rbac/permission/group
+/phoenix/rest/h5/rbac/permission/tabs
+/phoenix/rest/h5/rbac/roleswithfilter
+/phoenix/rest/h5/resource/network/list
+/phoenix/rest/h5/rt/changeAttr
+/phoenix/rest/h5/rt/next
+/phoenix/rest/h5/rt/stop
+/phoenix/rest/h5/rule/cnt - INT16 - Total count of defined rules
+/phoenix/rest/h5/rule/find/<objectId from /phoenix/rest/h5/rule/list>
+/phoenix/rest/h5/rule/ic - JSON - List of Incident Categories
+/phoenix/rest/h5/rule/list - JSON - List of Rules
+/phoenix/rest/h5/rule/sync/error - Bool - Any rule errors 
+/phoenix/rest/h5/sec/agentList - JSON - List of agents
+/phoenix/rest/h5/sec/allDomains - JSON - Customer orgs
+/phoenix/rest/h5/sec/currentUser - JSON - Detailed information about logged in user
+/phoenix/rest/h5/sec/custIdNameMap - JSON - domainId mapping
+/phoenix/rest/h5/sec/custs - JSON - Detailed domainId mapping
+/phoenix/rest/h5/sec/excludeDts - Unknown - Unknown
+/phoenix/rest/h5/sec/isLoggedIn - JSON - Shows if current session is active
+/phoenix/rest/h5/sec/license - JSON - Full license detail
+/phoenix/rest/h5/sec/modeExist - Bool - Unknown
+/phoenix/rest/h5/sec/sbo - JSON - Full login details with privs
+/phoenix/rest/h5/sec/sys/setting - JSON - Mail and misc settings
+/phoenix/rest/h5/sec/uuid - JSON - System UUID
+/phoenix/rest/h5/sys/DSTTimeZoneOffset - INT16 - DST Time Offset
+/phoenix/rest/h5/sys/IOCService/status - INT16 - FortiGuard Service activation
+/phoenix/rest/h5/sys/UTCTimezones - INT16 - UST Time Offset
+/phoenix/rest/h5/sys/cloud - JSON - Cloud Health, detail view
+/phoenix/rest/h5/sys/config/find - UNKNOWN - UNKNOWN
+/phoenix/rest/h5/sys/configs/find - JSON - System settings
+/phoenix/rest/h5/sys/customLogin - JSON - UNKNOWN
+/phoenix/rest/h5/sys/errors/cnt - INT16 - Total system errors
+/phoenix/rest/h5/sys/hb - STRING - Unknown
+/phoenix/rest/h5/sys/schedules - JSON - Unknown, possibly need to feed it schedule Id
+/phoenix/rest/h5/sys/serverTimeZoneOffset - INT16 - Server time offset
+/phoenix/rest/h5/task/start - JSON - Unknown, possibly need task Id
+/phoenix/rest/h5/user/find - JSON - Unknown, possibly need user Id
+/phoenix/rest/h5/user/lockedClients - JSON - List of locked user accounts
+/phoenix/rest/h5/user/sessions - JSON - Active user sessions with details
+/phoenix/rest/h5/user/vpr/1/500101 - JSON - Unknown, may remove
+/phoenix/rest/sync/task - XML - Current task list?
+/phoenix/rest/system/collectorResource - XML - Defined collectors and forwarding rules
+/phoenix/rest/system/phoenixServer - XML - ?
+/phoenix/rest/system/rbac/eventQueryCondition - XML - RBAC permissions
+/phoenix/rest/system/systemConfigs/archive - XML - Archive configuration
+/phoenix/rest/system/systemConfigs/dataRetentionPolicies - XML - Current retention policies
+/phoenix/rest/system/systemConfigs/droppingRules - XML - Current event dropping rules
+/phoenix/rest/system/systemConfigs/multilineEventRule - XML - Current multiline syslog rules
+/phoenix/rest/system/systemConfigs/property/System/unUsedEvents - XML - Unused events counter
+/phoenix/rest/system/systemConfigs/storage - XML - EventDB storage configuration
