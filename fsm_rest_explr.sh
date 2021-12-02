@@ -7,10 +7,7 @@ else
 fi
 
 shutdown() {
-  if [[ -n $cookie ]]; then
-    rm -f $cookie
-    exit $1
-  fi
+    exit $?
 }
 trap shutdown EXIT
 
@@ -118,9 +115,10 @@ authenticate() {
     base64_domain=$(base64 -w0 <<<"${domain:-Empty}")
     base64_session=$(encrypt_string "$salt" <<<"${session[@]}")
     echo "#${base64_domain}#${base64_session}" > .${fsmorg,,}_${fsmuser,,}.cred
+    rm -f "$cookie"
   else
     echo "$result"
-    rm -f $cookie .${fsmorg,,}_${fsmuser,,}.cred
+    rm -f .${fsmorg,,}_${fsmuser,,}.cred
     exit 1
   fi  
 }
