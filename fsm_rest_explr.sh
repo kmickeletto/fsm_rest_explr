@@ -16,7 +16,7 @@ help() {
 ## If you want to search through the FortiSIEM Apache logs instead, uncomment this line
 #  zcat /etc/httpd/logs/ssl_request_log* 2>/dev/null | awk '{print $6"|"$7"|"$9}' | grep -Pv '\|4..$' | grep -P 'GET' | cut -f1 -d'?' | grep '\/rest\/' | grep -v '\/h5\/report\/' | awk -F'|' '{print $2}' | sort | uniq | pr -t3 -w$(tput cols)
 ## And comment this line out
-  curl https://raw.githubusercontent.com/kmickeletto/fsm_rest_explr/main/endpoints.list | sort | uniq | pr -t2 -w$(tput cols)
+  curl -s https://raw.githubusercontent.com/kmickeletto/fsm_rest_explr/main/endpoints.list | sort | uniq | pr -t2 -w$(tput cols)
   exit 0
 }
 
