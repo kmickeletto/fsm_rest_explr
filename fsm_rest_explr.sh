@@ -92,6 +92,10 @@ authenticate() {
   fi
   [[ -z $fsmuser ]] && read -p 'Enter your username: ' fsmuser || echo "Username: $fsmuser"
   read -sp 'Enter your password: ' pass && echo
+  if [[ $fsmuser =~ [-_A-Za-z0-9]+/[-_A-Za-z0-9]+ ]]; then
+    fsmorg=${fsmuser%/*}
+    fsmuser=${fsmuser#*/}
+  fi
   [[ -z $fsmorg ]] && read -e -i Super -p 'Enter your org: ' fsmorg
   [[ -z $domain ]] && read -p 'Enter your LDAP domain, blank for none: ' domain
 
