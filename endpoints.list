@@ -3,18 +3,18 @@
 /phoenix/rest/cmdb/bizServices - XML - Defined business services
 /phoenix/rest/cmdb/event/type2group - XML - EventType to group mapping
 /phoenix/rest/cmdb/event/types - XML - Unknown
-/phoenix/rest/cmdbDeviceInfo/devices
-/phoenix/rest/config/EventForwardingRule
+/phoenix/rest/cmdbDeviceInfo/devices - XML - List of devices by org, ip, device type, etc
+/phoenix/rest/config/EventForwardingRule - XML - event forwarding configuration
 /phoenix/rest/config/User - XML - All defined users
 /phoenix/rest/config/applicationPackage
-/phoenix/rest/config/deviceType
+/phoenix/rest/config/deviceType - XML - List of all device types defined
 /phoenix/rest/config/domain - XML - Domain configuration
-/phoenix/rest/config/eventAttributeType
-/phoenix/rest/config/eventReorgRule
+/phoenix/rest/config/eventAttributeType - XML - All event type attributes, internal and display names
+/phoenix/rest/config/eventReorgRule - XML - Used to map events to differnt orgs
 /phoenix/rest/config/networkInterface
-/phoenix/rest/config/service
-/phoenix/rest/config/systemConfig
-/phoenix/rest/dashboard/perfETInfo
+/phoenix/rest/config/service - XML - List of all defined services and relative ports
+/phoenix/rest/config/systemConfig - XML - Web users don't have access
+/phoenix/rest/dashboard/perfETInfo - XML - All performance event types with their associated attributes
 /phoenix/rest/dataRequest/report - XML - Unknown, possibly only user created reports
 /phoenix/rest/dataRequest/rule - XML - Complete export of rules
 /phoenix/rest/dataRequest/ruleException - XML - Defined rule exceptions
@@ -25,28 +25,22 @@
 /phoenix/rest/device/propLite - Unknown - Unknown
 /phoenix/rest/device/propertyDefs - Unknown - Unknown
 /phoenix/rest/deviceInfo/appFilter
-/phoenix/rest/deviceInfo/applicableDevices
+/phoenix/rest/deviceInfo/applicableDevices - XML - 
 /phoenix/rest/deviceInfo/criticalIntfs
-/phoenix/rest/deviceInfo/eventPulling
-/phoenix/rest/deviceInfo/excludedDisks
+/phoenix/rest/deviceInfo/excludedDisks - XML - Any disk exclusions from monitoring
 /phoenix/rest/deviceInfo/excludedSharedDevices
 /phoenix/rest/deviceInfo/importantPorts
 /phoenix/rest/deviceInfo/importantApps
-/phoenix/rest/deviceInfo/parsing
-/phoenix/rest/deviceInfo/perfMonDevice
-/phoenix/rest/deviceInfo/perfMonitor
-/phoenix/rest/eventData/settings
+/phoenix/rest/deviceInfo/parsing - XML - Something to do with discoveries
+/phoenix/rest/deviceInfo/perfMonDevice - XML - Monitored devices along with their status
+/phoenix/rest/eventData/settings - XML - Event archive parameters
 /phoenix/rest/fins/aiSettings
 /phoenix/rest/fins/aiTags
 /phoenix/rest/h5/admin/analytics/incidenttag/list
 /phoenix/rest/h5/app/list
 /phoenix/rest/h5/app/pkg/<id from /phoenix/rest/h5/app/list> - JSON
 /phoenix/rest/h5/app/pkg/findByCust - JSON - Unknown
-/phoenix/rest/h5/cmdbReport/meta/all
-/phoenix/rest/h5/dashboard/folder/order
-/phoenix/rest/h5/dashboard/get
-/phoenix/rest/h5/dashboard/slideshow
-/phoenix/rest/h5/dashboard/widgets
+/phoenix/rest/h5/cmdbReport/meta/all - JSON - metadata used in CMDB reporting
 /phoenix/rest/h5/device/cnts - JSON - Unknown
 /phoenix/rest/h5/device/dts
 /phoenix/rest/h5/device/linkage
@@ -57,10 +51,11 @@
 /phoenix/rest/h5/device/query - JSON - Well formed JSON payload about devices
 /phoenix/rest/h5/device/quickInfo - Unknown - Unknown
 /phoenix/rest/h5/device/stat - Unknown - Unknown
+/phoenix/rest/h5/device/eventConfig - JSON - Requires deviceId parameter, will return event pulling info
 /phoenix/rest/h5/discover/credentials - JSON - Discovery crednetial information
 /phoenix/rest/h5/discover/flag/monitorInterface
 /phoenix/rest/h5/discover/flag/monitorProcess
-/phoenix/rest/h5/discover/ipMappings
+/phoenix/rest/h5/discover/ipMappings - JSON - IP mappings, links to /phoenix/rest/h5/discover/credentials by .id
 /phoenix/rest/h5/eventAttributeType/all - JSON - Complete list of EventTypes with category Id
 /phoenix/rest/h5/eventAttributeType/byEventType - Unknown - Unknown
 /phoenix/rest/h5/eventType/cnt - INT16 - Total count of defined EventTypes
@@ -68,17 +63,6 @@
 /phoenix/rest/h5/eventType/parsers - JSON - Complete dump of all system parsers
 /phoenix/rest/h5/eventType/query - Unknown - Hangs
 /phoenix/rest/h5/gdpr/list/pending - JSON - List of GDPR devices?
-/phoenix/rest/h5/group/cmdb - JSON - High levelCMDB group information
-/phoenix/rest/h5/group/dashboard
-/phoenix/rest/h5/group/path
-/phoenix/rest/h5/group/report
-/phoenix/rest/h5/group/resource
-/phoenix/rest/h5/group/root/CmdbReport
-/phoenix/rest/h5/group/root/DyWatchList
-/phoenix/rest/h5/group/root/Network
-/phoenix/rest/h5/group/root/Report
-/phoenix/rest/h5/group/root/Rule
-/phoenix/rest/h5/group/root/Service
 /phoenix/rest/h5/mal/site/cnt - INT16 - Count of defined malware entries
 /phoenix/rest/h5/mal/site/group/CMDB_MalwareSite
 /phoenix/rest/h5/mal/site/list
@@ -86,7 +70,7 @@
 /phoenix/rest/h5/rbac/permission/entity
 /phoenix/rest/h5/rbac/permission/group
 /phoenix/rest/h5/rbac/permission/tabs
-/phoenix/rest/h5/rbac/roleswithfilter
+/phoenix/rest/h5/rbac/roleswithfilter - JSON - List of RBAC roles and Ids
 /phoenix/rest/h5/resource/network/list
 /phoenix/rest/h5/rt/changeAttr
 /phoenix/rest/h5/rt/next
@@ -105,14 +89,16 @@
 /phoenix/rest/h5/sec/isLoggedIn - JSON - Shows if current session is active
 /phoenix/rest/h5/sec/license - JSON - Full license detail
 /phoenix/rest/h5/sec/modeExist - Bool - Unknown
-/phoenix/rest/h5/sec/sbo - JSON - Full login details with privs
+/phoenix/rest/h5/sec/sbo - JSON - Very detailed login info for current user
 /phoenix/rest/h5/sec/sys/setting - JSON - Mail and misc settings
 /phoenix/rest/h5/sec/uuid - JSON - System UUID
 /phoenix/rest/h5/sys/DSTTimeZoneOffset - INT16 - DST Time Offset
 /phoenix/rest/h5/sys/IOCService/status - INT16 - FortiGuard Service activation
 /phoenix/rest/h5/sys/UTCTimezones - INT16 - UST Time Offset
 /phoenix/rest/h5/sys/cloud - JSON - Cloud Health, detail view
-/phoenix/rest/h5/sys/config/find - UNKNOWN - UNKNOWN
+/phoenix/rest/h5/sys/config/find?key=excludedSharedDeviceIps - STRING - List of excluded shared device IPs
+/phoenix/rest/h5/sys/config/find?key=virtualDeviceHwSN - STRING - List of virtual device serial numbers
+/phoenix/rest/h5/sys/config/find?key=approvedDevicesOnly - STRING - Only trigger incidents on approved devices
 /phoenix/rest/h5/sys/configs/find - JSON - System settings
 /phoenix/rest/h5/sys/customLogin - JSON - UNKNOWN
 /phoenix/rest/h5/sys/errors/cnt - INT16 - Total system errors
