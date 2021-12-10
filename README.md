@@ -21,3 +21,8 @@ export fsmhost=fortisiem.somecompany.com
 	 --fsmhost|-h,		FortiSIEM Supervisor
 	 --passwd,		use is discouraged but if you need a completely automated solution it will work
 	 --insecure|-i,		don't attempt to validate Supervisor certificate
+
+## Usage
+```
+./fsm_rest_explr /phoenix/exportReport?reportIds=123456
+```
