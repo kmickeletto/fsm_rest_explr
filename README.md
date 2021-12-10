@@ -5,6 +5,8 @@ fsm_test_explr is a simple command line tool to view data from the FortiSIEM int
 Access to the Supervisor via HTTPS
 
 ## Options
+For requests that fetch data from the API by Id, ex /phoenix/exportReport?reportIds=123456
+you can add multiple Id's separated by commas.  /phoenix/exportReport?reportIds=123456,987654
 
 ### Options as exported variables
 You can export any of the following variables.
