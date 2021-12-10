@@ -1,3 +1,4 @@
+/phoenix/exportReport - XML - Exports reports, suppliment with ?reportIds= and supply the internal report Ids
 /phoenix/rest/dataRequest/networkDependency - XML - Layer3 network dependencies
 /phoenix/rest/changeSet - XML - Dynamic Watchlists?
 /phoenix/rest/cmdb/bizServices - XML - Defined business services
